@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: UberBookingService
+
+  config:
+    import: optional:env[MYSQL_PASSWORD]
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/uber_local_db
+    username: root
+    password: ${MYSQL_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        enable_lazy_load_no_trans: true
+
+server:
+  port: 8090
