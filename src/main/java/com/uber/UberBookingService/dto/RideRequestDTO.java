@@ -20,4 +20,6 @@ public class RideRequestDTO {
 
     private List<Long> driverIds;
 
+    private Long bookingId;
+
 }

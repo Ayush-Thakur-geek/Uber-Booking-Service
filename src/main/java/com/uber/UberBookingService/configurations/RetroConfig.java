@@ -33,7 +33,7 @@ public class RetroConfig {
     }
 
     @Bean
-    public UberSocketApi  uberSocketApi() {
+    public UberSocketApi uberSocketApi() {
         return new Retrofit.Builder()
                 .baseUrl(getServiceUrl("CLIENTSOCKETSERVICE"))
                 .addConverterFactory(GsonConverterFactory.create())
