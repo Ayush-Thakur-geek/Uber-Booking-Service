@@ -105,10 +105,15 @@ public class BookingServiceImpl implements BookingService {
         // Get driver by driverId from DTO
         Optional<Driver> driver = driverRepository.findById(updateBookingDTO.getDriverId());
 
-        driver.ifPresent(value -> bookingRepository.updateBookingStatusAndDriverById(
-                bookingId,
-                updateBookingDTO.getBookingStatus(),  // ensure correct type
-                value));
+        System.out.println("driver id: " + driver.get().getId());
+        driver.ifPresent(value -> {
+            bookingRepository.updateBookingStatusAndDriverById(
+                    bookingId,
+                    updateBookingDTO.getBookingStatus(),  // ensure correct type
+                    value);
+            System.out.println("driver id: " + value.getId());
+            driverRepository.updateDriverStatus(value.getId());
+        });
 
         Optional<Booking> booking = bookingRepository.findById(bookingId);
 
