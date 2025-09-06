@@ -101,7 +101,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public UpdateBookingResponseDTO updateBooking(UpdateBookingRequestDTO updateBookingDTO, long bookingId) {
+    public synchronized UpdateBookingResponseDTO updateBooking(UpdateBookingRequestDTO updateBookingDTO, long bookingId) {
         // Get driver by driverId from DTO
         Optional<Driver> driver = driverRepository.findById(updateBookingDTO.getDriverId());
 
